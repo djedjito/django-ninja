@@ -66,22 +66,23 @@ Inicie o servidor:
 bash
 python manage.py runserver
 📚 Estrutura do Projeto
+
 django-auth-system/
-├── auth_project/          # Configurações do projeto
-├── users/                 # App de usuários e autenticação
-│   ├── models.py          # Modelos de User, Profile e Menu
-│   ├── api.py             # Endpoints da API
-│   └── signals.py         # Dados iniciais automáticos
-├── .env.example           # Modelo de variáveis de ambiente
-├── requirements.txt       # Dependências do projeto
-└── manage.py              # Script de gerenciamento
+├── auth_project/
+├── users/    
+│   ├── models.py    
+│   ├── api.py            
+│   └── signals.py        
+├── .env.example           
+├── requirements.txt       
+└── manage.py            
 🌐 Endpoints da API
 Método	Endpoint	Descrição	Acesso
-POST	/api/register	Registrar novo usuário	Público
-POST	/api/token	Obter tokens JWT	Público
-GET	/api/profile/menu	Obter menu por perfil	Autenticado
-POST	/api/request-anfitriao	Solicitar upgrade para Anfitrião	Convidado
-POST	/api/users/{id}/change-profile	Alterar perfil de usuário	Admin
+* POST	/api/register	Registrar novo usuário	Público
+* POST	/api/token	Obter tokens JWT	Público
+* GET	/api/profile/menu	Obter menu por perfil	Autenticado
+* POST	/api/request-anfitriao	Solicitar upgrade para Anfitrião	Convidado
+* POST	/api/users/{id}/change-profile	Alterar perfil de usuário	Admin
 🔒 Modelos de Permissão
 python
 PROFILE_CHOICES = [
