@@ -1,115 +1,144 @@
 ![image](https://github.com/user-attachments/assets/924e12e7-aea3-4142-acbe-9942eefe837e)
 
-📝 Sistema de Autenticação com Django Ninja + JWT
-Um sistema completo de autenticação com perfis de usuário (Admin, Anfitrião, Convidado) e menus dinâmicos, desenvolvido com Django Ninja e JWT.
+🔐 User Management & API Service Platform (Django + Ninja + JWT)
 
-🚀 Funcionalidades Principais
-Autenticação por JWT (Tokens de acesso e refresh)
+    Este projeto é uma plataforma moderna e escalável de gestão de usuários e serviços web, construída com Django, Django Ninja, JWT e boas práticas de engenharia de software. Foi concebido com uma arquitetura modular e robusta, pensando em segurança, extensibilidade e clareza — ideal para ambientes de produção e demonstrações técnicas.
 
-CRUD de usuários completo
+✨ Destaques
 
-Sistema de perfis com três níveis:
+    ✅ Autenticação segura com JWT
+    
+    ⚙️ Interface web (API REST) via Django Ninja
+    
+    🧰 CLI administrativa via manage.py
+    
+    🧩 Arquitetura modular baseada em Django Apps reutilizáveis
+    
+    🛠️ Separação clara entre componentes internos, externos e bibliotecas
+    
+    📚 Utilização de bibliotecas modernas e bem suportadas
 
-👑 Administrador (acesso total)
+🧠 Visão Arquitetural
 
-🏠 Anfitrião (gerencia propriedades)
+    Nota: A imagem acima mostra o fluxo de dados e interações entre módulos internos, utilizadores externos, bases de dados e bibliotecas compartilhadas.
 
-👋 Convidado (acesso básico)
+🔍 Componentes Principais
 
-Menus dinâmicos por perfil
+1. Application Core
+    Base principal da lógica de negócio.
 
-Transição entre perfis (Admin pode alterar perfis de outros usuários)
+    Expõe endpoints REST através do Django Ninja.
 
-🛠 Tecnologias Utilizadas
-Python 3.9+
+    Interage com o User Management Module.
 
-Django 4.2
+2. User Management Module
 
-Django Ninja (para API REST)
+    App Django dedicado à criação, autenticação e gerenciamento de usuários.
 
-SimpleJWT (para autenticação)
+    Utilizado tanto pela CLI quanto pela camada de serviço web.
 
-SQLite (banco de dados padrão)
+3. Management CLI
+   
+    Interface de linha de comando via manage.py.
 
-⚙️ Configuração do Ambiente
-Clone o repositório:
+    Permite operações administrativas e de manutenção.
+
+4. Web Service Core
+   
+    Camada que lida com requisições HTTP externas.
+
+    Utiliza Django + Django Ninja para servir APIs protegidas por JWT.
+
+5. User Account Module
+    Módulo responsável por dados de conta, configurações e perfis de usuários.
+
+🛡️ Autenticação e Segurança
+
+    Baseada em JWT, com suporte a tokens de acesso e refresh.
+
+    Toda comunicação entre cliente e servidor é feita por HTTPS (recomendado).
+
+    Tokens são verificados em middleware e protegidos com práticas modernas de segurança.
+
+    Melhores práticas de segurança do OWASP top 10, consulte no link: https://owasp.org/Top10/
+
+🗃️ Base de Dados
+
+    Utiliza SQLite para persistência local durante o desenvolvimento.
+
+    Modular e facilmente adaptável para PostgreSQL ou outro SGBD relacional em produção.
+
+🔧 Dependências
 
 bash
-git clone https://github.com/seu-usuario/django-auth-system.git
-cd django-auth-system
-Crie e ative um ambiente virtual:
+Copy
+Edit
+Django==X.X
+djangorestframework==X.X
+django-ninja==X.X
+djangorestframework-simplejwt==X.X
+Consulte requirements.txt para a lista completa.
 
+🚀 Como Rodar o Projeto
 bash
+Copy
+Edit
+# 1. Clone o repositório
+git clone https://github.com/djedjito/django-ninja.git
+cd seu-repo
+
+# 2. Crie e ative um ambiente virtual
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
-Instale as dependências:
+source venv/bin/activate  # ou venv\Scripts\activate no Windows
 
-bash
+# 3. Instale as dependências
 pip install -r requirements.txt
-Configure o ambiente:
 
-Renomeie .env.example para .env
-
-Preencha com suas configurações
-
-Aplique as migrações:
-
-bash
+# 4. Execute as migrações
 python manage.py migrate
-Crie um superusuário:
 
-bash
-python manage.py createsuperuser
-Inicie o servidor:
-
-bash
+# 5. Inicie o servidor
 python manage.py runserver
-📚 Estrutura do Projeto
+📮 Exemplo de Requisição via API
+http
+Copy
+Edit
+POST /api/auth/token
+Authorization: Bearer <your_token>
+Content-Type: application/json
 
-django-auth-system/
+{
+  "username": "usuario_exemplo",
+  "password": "sua_senha"
+}
+👤 Usuários e Papéis
+User: Acessa a API via HTTP
 
-├── auth_project/
+End User / Developer / Operator: Atua externamente no banco ou consome serviços
 
-├── users/    
-│   ├── models.py    
-│   ├── api.py            
-│   └── signals.py        
-├── .env.example           
-├── requirements.txt       
-└── manage.py            
-🌐 Endpoints da API
-Método	Endpoint	Descrição	Acesso
-* POST	/api/register	Registrar novo usuário	Público
-* POST	/api/token	Obter tokens JWT	Público
-* GET	/api/profile/menu	Obter menu por perfil	Autenticado
-* POST	/api/request-anfitriao	Solicitar upgrade para Anfitrião	Convidado
-* POST	/api/users/{id}/change-profile	Alterar perfil de usuário	Admin
-🔒 Modelos de Permissão
-python
-PROFILE_CHOICES = [
-    ('admin', 'Administrador'),     # Acesso completo
-    ('anfitriao', 'Anfitrião'),     # Gerenciar propriedades
-    ('guest', 'Convidado')          # Acesso básico
-]
-🧪 Executando Testes
-bash
-python manage.py test
-🤝 Como Contribuir
-Faça um fork do projeto
+Admin CLI: Executa comandos administrativos (ex: criação em massa, reset de senhas)
 
-Crie uma branch (git checkout -b feature/AmazingFeature)
+Serviço Web: Responsável por autenticação, rotas, autorização e gestão de sessão
 
-Commit suas mudanças (git commit -m 'Add some AmazingFeature')
+🔄 Extensibilidade
+Cada módulo é desacoplado e pode ser substituído, extendido ou reusado em diferentes projetos Django. Exemplo: o módulo de autenticação pode ser facilmente migrado para outro projeto com mínima modificação.
 
-Push para a branch (git push origin feature/AmazingFeature)
+💼 Para Entrevistas
+Este projeto demonstra:
 
-Abra um Pull Request
+Domínio de arquitetura limpa em Django
 
-📄 Licença
-Distribuído sob a licença MIT. Veja LICENSE para mais informações.
+Capacidade de trabalhar com APIs modernas (REST, JWT)
 
-✉️ Contato
-Seu Nome - @seu_twitter - seu-email@exemplo.com
+Proficiência em modularização e separação de responsabilidades
 
-Link do Projeto: https://github.com/seu-usuario/django-auth-system
+Habilidade de pensar em segurança, escalabilidade e manutenção
+
+📬 Contato
+Quer saber mais ou colaborar?
+
+📧 seu.email@example.com
+💼 LinkedIn
+📦 GitHub
+
+⭐ Se este projeto te ajudou ou chamou atenção, considere dar uma estrela no repositório!
