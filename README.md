@@ -80,9 +80,9 @@ djangorestframework-simplejwt==X.X
 Consulte requirements.txt para a lista completa.
 
 🚀 Como Rodar o Projeto
-bash
-Copy
-Edit
+    bash
+    Copy
+    Edit
 # 1. Clone o repositório
 git clone https://github.com/djedjito/django-ninja.git
 cd seu-repo
@@ -98,47 +98,41 @@ pip install -r requirements.txt
 python manage.py migrate
 
 # 5. Inicie o servidor
-python manage.py runserver
+    python manage.py runserver
 📮 Exemplo de Requisição via API
-http
-Copy
-Edit
-POST /api/auth/token
-Authorization: Bearer <your_token>
-Content-Type: application/json
+    http
+    Copy
+    Edit
+    POST /api/auth/token
+    Authorization: Bearer <your_token>
+    Content-Type: application/json
 
-{
-  "username": "usuario_exemplo",
-  "password": "sua_senha"
-}
+    {
+      "username": "usuario_exemplo",
+      "password": "sua_senha"
+    }
 👤 Usuários e Papéis
-User: Acessa a API via HTTP
-
-End User / Developer / Operator: Atua externamente no banco ou consome serviços
-
-Admin CLI: Executa comandos administrativos (ex: criação em massa, reset de senhas)
-
-Serviço Web: Responsável por autenticação, rotas, autorização e gestão de sessão
+    User: Acessa a API via HTTP
+    
+    End User / Developer / Operator: Atua externamente no banco ou consome serviços
+    
+    Admin CLI: Executa comandos administrativos (ex: criação em massa, reset de senhas)
+    
+    Serviço Web: Responsável por autenticação, rotas, autorização e gestão de sessão
 
 🔄 Extensibilidade
-Cada módulo é desacoplado e pode ser substituído, extendido ou reusado em diferentes projetos Django. Exemplo: o módulo de autenticação pode ser facilmente migrado para outro projeto com mínima modificação.
+    Cada módulo é desacoplado e pode ser substituído, extendido ou reusado em diferentes projetos Django. Exemplo: o módulo de autenticação pode ser facilmente migrado para outro projeto com mínima modificação.
 
 💼 Para Entrevistas
-Este projeto demonstra:
+    Este projeto demonstra:
+    
+    Domínio de arquitetura limpa em Django
+    
+    Capacidade de trabalhar com APIs modernas (REST, JWT)
+    
+    Proficiência em modularização e separação de responsabilidades
+    
+    Habilidade de pensar em segurança, escalabilidade e manutenção
 
-Domínio de arquitetura limpa em Django
-
-Capacidade de trabalhar com APIs modernas (REST, JWT)
-
-Proficiência em modularização e separação de responsabilidades
-
-Habilidade de pensar em segurança, escalabilidade e manutenção
-
-📬 Contato
-Quer saber mais ou colaborar?
-
-📧 seu.email@example.com
-💼 LinkedIn
-📦 GitHub
 
 ⭐ Se este projeto te ajudou ou chamou atenção, considere dar uma estrela no repositório!
