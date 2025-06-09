@@ -69,15 +69,12 @@
     Modular e facilmente adaptável para PostgreSQL ou outro SGBD relacional em produção.
 
 🔧 Dependências
-
-bash
-Copy
-Edit
-Django==X.X
-djangorestframework==X.X
-django-ninja==X.X
-djangorestframework-simplejwt==X.X
-Consulte requirements.txt para a lista completa.
+    Edit
+    Django==X.X
+    djangorestframework==X.X
+    django-ninja==X.X
+    djangorestframework-simplejwt==X.X
+    Consulte requirements.txt para a lista completa.
 
 🚀 Como Rodar o Projeto
     bash
