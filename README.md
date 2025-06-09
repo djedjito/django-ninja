@@ -82,7 +82,7 @@
     Edit
 # 1. Clone o repositório
 git clone https://github.com/djedjito/django-ninja.git
-cd seu-repo
+cd auth_project
 
 # 2. Crie e ative um ambiente virtual
 python -m venv venv
