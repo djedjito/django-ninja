@@ -69,12 +69,12 @@
     Modular e facilmente adaptável para PostgreSQL ou outro SGBD relacional em produção.
 
 🔧 Dependências
-    Edit
-    Django==X.X
-    djangorestframework==X.X
-    django-ninja==X.X
-    djangorestframework-simplejwt==X.X
-    Consulte requirements.txt para a lista completa.
+
+        Django==X.X
+        djangorestframework==X.X
+        django-ninja==X.X
+        djangorestframework-simplejwt==X.X
+        Consulte requirements.txt para a lista completa.
 
 🚀 Como Rodar o Projeto
     bash
@@ -119,17 +119,5 @@ python manage.py migrate
 
 🔄 Extensibilidade
     Cada módulo é desacoplado e pode ser substituído, extendido ou reusado em diferentes projetos Django. Exemplo: o módulo de autenticação pode ser facilmente migrado para outro projeto com mínima modificação.
-
-💼 Para Entrevistas
-    Este projeto demonstra:
-    
-    Domínio de arquitetura limpa em Django
-    
-    Capacidade de trabalhar com APIs modernas (REST, JWT)
-    
-    Proficiência em modularização e separação de responsabilidades
-    
-    Habilidade de pensar em segurança, escalabilidade e manutenção
-
 
 ⭐ Se este projeto te ajudou ou chamou atenção, considere dar uma estrela no repositório!
