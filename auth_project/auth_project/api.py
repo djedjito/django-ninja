@@ -6,7 +6,7 @@ from users.models import UserPermission
 from django.shortcuts import get_object_or_404
 from ninja.errors import HttpError
 from django.contrib.auth.hashers import make_password, check_password
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 
 from typing import List, Dict
 from users.models import Profile, MenuItem
@@ -15,14 +15,15 @@ from users.models import Profile, MenuItem
 
 api = NinjaAPI()
 
-class AuthBearer (HttpBearer):
+class AuthBearer(HttpBearer):
     def authenticate(self, request, token):
         try:
-            user = get_user_model().objects.get(auth_token=token)
+            access_token = AccessToken(token)
+            user = get_user_model().objects.get(id=access_token['user_id'])
             return user
         except:
             return None
-@api.post("/token")
+@api.post("/login")
 def get_token(request, email: str, password: str):
     User = get_user_model()
     user = get_object_or_404(User, email=email)
@@ -141,7 +142,7 @@ def assign_permission(request, user_id: int, permission_id: int):
 @api.get('/profile/menu', response=List[Dict])
 def get_user_menu(request):
     """A ideia é de retornar menu de acordo com perfil do utilizador"""
-    if not request.user.is_authenticates:
+    if not request.user.is_authenticated:
         raise HttpError(401, 'Não autenticado')
     
     menu_items = MenuItem.objects.filter(profiles=request.user.profile).order_by('order')
