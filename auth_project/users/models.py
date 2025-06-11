@@ -99,8 +99,12 @@ class CustomUser (AbstractBaseUser, PermissionsMixin):
     @property
     def is_anfitriao(self):
         return self.profile.name == 'anfitriao'
-    @property
+    @property 
     def is_anfitriao(self):
+        return self.profile.name == 'anfitriao'
+
+    @property
+    def is_guest(self):
         return self.profile.name == 'guest'
 class UserPermission(models.Model):
     name = models.CharField(max_length=255, unique=True)

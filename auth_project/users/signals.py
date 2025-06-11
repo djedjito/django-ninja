@@ -2,9 +2,12 @@ from django.db.models.signals import post_migrate
 from django.dispatch import receiver
 from users.models import Profile, MenuItem
 
-@receiver
+@receiver (post_migrate)
 def  create_initial_data (sender, **kwargs):
+    
+    print(f"Signal post_migrate disparado para sender: {sender.name}")
     if sender.name == 'users':
+        print("Criando dados iniciais...")
         admin_profile, _ = Profile.objects.get_or_create (
             name = 'admin',
             defaults= {'description' : 'Administrador do sistema com todos o previlegios'}
